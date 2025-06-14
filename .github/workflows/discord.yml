@@ -1,8 +1,10 @@
-name: Sheet → Discord
+name: sheet-to-discord
+
 on:
   schedule:
     - cron: '0 1 * * *'     # 每日 09:00 (台北) 執行
-   workflow_dispatch:        # ← 加這一行就能手動 Run
+  workflow_dispatch:         # 允許手動 Run
+
 jobs:
   run:
     runs-on: ubuntu-latest
