@@ -1,0 +1,15 @@
+name: Sheet → Discord
+on:
+  schedule:
+    - cron: '0 1 * * *'     # 每日 09:00 (台北) 執行
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      CSV_URL: ${{ secrets.CSV_URL }}
+      WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - run: pip install pandas requests
+      - run: python push_events_to_discord.py
